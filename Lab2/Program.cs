@@ -6,56 +6,56 @@ namespace Lab2
     {
         static void Main(string[] args)
         {
-            var array = ReadArray();
-            var range = ReadRange();
-            var summ = GetSummOnRangeInArray(range, array);
+            var array = ReadArray(); // Читаем массив (стр. 31)
+            var range = ReadRange(); // Читаем диапазон для суммирования (стр. 46)
+            var summ = GetSummOnRangeInArray(range, array); // Считаем сумму (стр. 16)
 
-            Console.WriteLine($"Summ = {summ}");
+            Console.WriteLine($"Summ = {summ}"); // Выводим результат на  экран
         }
 
-        private static int GetSummOnRangeInArray(int[] range, int[] array)
+        private static int GetSummOnRangeInArray(int[] range, int[] array) // Метод будет считать сумму элементов массива в указанном диапазоне (на входе диапазон и массив)
         {
-            int summ = 0;
+            int summ = 0; // Инициализируем переменную для суммы
 
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < array.Length; i++) // Метод перебора массива
             {
-                if (array[i] >= range[0] && array[i] <= range[1])
+                if (array[i] >= range[0] && array[i] <= range[1]) // Если данный элемент массива находится в указанном диапазоне
                 {
-                    summ += array[i];
+                    summ += array[i]; // Увеличиваем значение суммы на значение текущего элемента массива
                 }
             }
 
-            return summ;
+            return summ; // Возвращаем сумму
         }
         
         private static int[] ReadArray()
         {
-            Console.Write("Enter array length: ");
-            var arrayLength = ReadNumber();
-            var array = new int[arrayLength];
+            Console.Write("Enter array length: "); // Просим ввести длину массива
+            var arrayLength = ReadNumber(); // Вызываем метод чтения числа (стр. 61)
+            var array = new int[arrayLength]; // Инициализируем массив указанной длины
 
-            for (int i = 0; i < arrayLength; i++)
+            for (int i = 0; i < arrayLength; i++) // Перебираем массив
             {
-                Console.Write($"Enter array[{i}]: ");
-                array[i] = ReadNumber();
+                Console.Write($"Enter array[{i}]: "); // Просим ввести указанный элемент массива
+                array[i] = ReadNumber(); // Вызываем метод чтения числа (стр. 61)
             }
 
-            return array;
+            return array; // Возвращаем массив
         }
 
-        private static int[] ReadRange()
+        private static int[] ReadRange() // Метод чтения диапазона
         {
-            var range = new int[2];
-            Console.Write("Enter low bound: ");
-            range[0] = ReadNumber();
- 
-            Console.Write("Enter upper bound: ");
-            while ((range[1] = ReadNumber()) < range[0])
+            var range = new int[2]; // Инициализируем массив в 2 элемента
+            Console.Write("Enter low bound: "); // Просим ввести нижнюю граница диапазона
+            range[0] = ReadNumber(); // Вызываем метод чтения числа (стр. 61)
+            
+            Console.Write("Enter upper bound: "); // Просим ввести верхнюю границу диапазона
+            while ((range[1] = ReadNumber()) < range[0]) // Пока пользователь вводит число меньше нижней границы
             {
-                Console.WriteLine($"Upper bound can't be less {range[0]}, try again!");
+                Console.WriteLine($"Upper bound can't be less {range[0]}, try again!"); // Ругаемся на него и просим ввести заново
             }
 
-            return range;
+            return range; // Возвращаем полученный диапазон
         }
 
         private static int ReadNumber() // Метод считывающий число с консоли
